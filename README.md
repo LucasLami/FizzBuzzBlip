@@ -29,4 +29,10 @@ Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce proje
 Ce jeu a été créé par [Lucas.L]. 
 
 
-Il y a aussi la main jouable à partir du terminal !
+Il y a aussi la version main jouable à partir du terminal !
+
+Et pour avoir accès aux scores des joueurs, télécharger le fichier index + scores et suivez les instructions ci-dessous. (sinon regarder website.pdf)
+Ouvrez une fenêtre de terminal ou de commande.
+Naviguez jusqu'au répertoire contenant vos fichiers web à l'aide de la commande cd
+Démarrez le serveur web local en exécutant la commande python -m http.server
+Puis aller sur http://localhost:8000/
