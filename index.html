@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Scores</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr.highlight {
+            background-color: #90ee90;
+        }
+    </style>
+</head>
+<body>
+    <h1>Top Scores</h1>
+    <table id="scoresTable">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        fetch('scores.xml')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(data, 'application/xml');
+
+                const scores = Array.from(xmlDoc.getElementsByTagName('joueur'))
+                    .map(joueur => ({
+                        player: joueur.getAttribute('nom'),
+                        score: parseInt(joueur.textContent, 10)
+                    }));
+
+                scores.sort((a, b) => b.score - a.score);
+
+                const tableBody = document.getElementById('scoresTable').getElementsByTagName('tbody')[0];
+
+                for (const [index, score] of scores.entries()) {
+                    const tr = document.createElement('tr');
+                    tr.appendChild(createElementWithText('td', score.player));
+                    tr.appendChild(createElementWithText('td', score.score));
+
+                    if (index < 3) {
+                        tr.classList.add('highlight');
+                    }
+
+                    tableBody.appendChild(tr);
+                }
+
+                function createElementWithText(tag, text) {
+                    const element = document.createElement(tag);
+                    element.textContent = text;
+                    return element;
+                }
+            });
+    </script>
+</body>
+</html>
