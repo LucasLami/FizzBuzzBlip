@@ -20,7 +20,8 @@ Ce projet a été développé en utilisant Python et la bibliothèque Tkinter po
 1. Assurez-vous d'avoir Python installé sur votre système.
 2. Clonez ce dépôt sur votre machine.
 3. Installez les dépendances en exécutant `pip install -r requirements.txt`.
-4. Lancez le jeu en exécutant `python fizzbuzz_blip_gui.py`.
+4. Lancez le jeu graphique en exécutant `python fizzbuzz_blip_gui.py`.
+5. Lancez le jeu terminal en exécutant `python fizzbuzz_blip_main.py`.
 
 ## Contribuer
 Les contributions sont les bienvenues ! Si vous souhaitez contribuer à ce projet, vous pouvez ouvrir une pull request ou signaler des problèmes en créant une issue.
